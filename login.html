@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>XMLHttpRequest</h2>
+  <p id="demo">AJAX en action.</p>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button type="button" onclick="login()">Se connecter</button>
+  <button type="button" onclick="register()">S'inscrire</button>
+  <script>
+    function login() {
+      var xhttp = new XMLHttpRequest();
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var url = `http://localhost:3000/login?username=${username}&password=${password}`;
+      xhttp.open("GET", url, true);
+      xhttp.send();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          document.getElementById("demo").innerHTML = this.responseText;
+        } else {
+          document.getElementById("demo").innerHTML = 'Error: ' + this.status;
+        }
+      }
+    }
+}
+    function register(){
+        var xhttp = new XMLHttpRequest();
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var url = `http://localhost:3000/register?username=${username}&password=${password}`;
+      xhttp.open("POST", url, true);
+      xhttp.send();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          document.getElementById("demo").innerHTML = this.responseText;
+        } else {
+          document.getElementById("demo").innerHTML = 'Error: ' + this.status;
+        }
+      }
+    }
+    }
+  </script>
+</body>
+</html>
