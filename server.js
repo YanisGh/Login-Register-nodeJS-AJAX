@@ -33,7 +33,7 @@ app.get('/login', (req, res) => {
   const password = req.query.password;
 
   const hashedPassword = MD5(password);
-  console.log('Hashed Password:', hashedPassword);
+//   console.log('Hashed Password:', hashedPassword);
 
   // Perform the SQL query to search for the login data
   const query = `SELECT * FROM users WHERE username = ? AND password = ?`;
@@ -59,7 +59,7 @@ app.post('/register', (req, res) => {
     const password = req.query.password;
   
     const hashedPassword = MD5(password);
-    console.log('Hashed Password:', hashedPassword);
+    // console.log('Hashed Password:', hashedPassword);
   
     // Perform the SQL query to search for the existing user
     const query = `SELECT * FROM users WHERE username = ?`;
